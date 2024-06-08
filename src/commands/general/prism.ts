@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 import { Command } from "../../structures/Command";
+import config from "../../../config";
 
 export default new Command({
     name: "prism",
@@ -17,7 +18,9 @@ export default new Command({
         if (command === "stats") {
             const embed = new EmbedBuilder()
             .setColor("#00BFFF")
-            .setDescription(`Hello!`);
+            .setDescription(`
+${config.emotes.point} API Latency: **${client.ws.ping.toLocaleString()}**ms
+${config.emotes.point} Servers: **${client.guilds.cache.size.toLocaleString()}**`);
             return interaction.followUp({ embeds: [embed] });
         };
     },
